@@ -1,0 +1,22 @@
+
+<div class="container-fluid">
+    <div id="ui-view" style="opacity: 1;"><div class="animated fadeIn">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card card-accent-success">
+              <div class="card-header">
+                Thanks
+              </div>
+              <div class="card-body">
+                <h2>Your order has been received</h2><br>
+                <h5>Thank you for your purchase!!</h5>
+                <label *ngIf="orderNum">Your order #: {{orderNum}} </label><br>
+                <label *ngIf="order.pickup_date">Pickup date #: {{order.pickup_date}} </label><br>
+                <label *ngIf="order.dropoff_date">Dropoff date #: {{order.dropoff_date}} </label><br>
+                <label *ngIf="order.deliveryFee">Delivery Fee: {{order.deliveryFee}} </label>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>        

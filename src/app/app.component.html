@@ -1,0 +1,53 @@
+
+<header class="app-header navbar" *ngIf="authGuard.allowTransition()">
+    <button class="navbar-toggler d-lg-none" type="button" appMobileSidebarToggler>&#9776;</button>
+    <a class="navbar-brand" href="#"></a>
+    <ul class="nav navbar-nav mr-auto d-md-down-none">
+      <li class="nav-item">
+        <a class="nav-link navbar-toggler" href="#" appSidebarToggler>&#9776;</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav ml-auto" style="padding-right:20px;">
+        <li class="nav-item d-md-down-none">
+          <a class="nav-link" href="#"><i class="icon-phone"></i> 281-409-3557</a>
+           </li>
+        <li class="nav-item d-md-down-none">
+            <button type="button" class="btn btn-primary btn-lg" [routerLink]="['/placeorder']">Place Order</button>
+        </li>
+      </ul>
+</header>
+  
+  <div *ngIf="authGuard.allowTransition(); else loginTemplate" class="app-body">
+    <sidebar ></sidebar>
+  
+    <!-- Main content -->
+    <main class="main">
+  
+      <!-- Breadcrumb -->
+      <!-- <ol class="breadcrumb">
+        <app-breadcrumbs></app-breadcrumbs>
+      </ol> -->
+  
+      <div class="container-fluid">
+          <alert></alert>
+        <router-outlet></router-outlet>
+      </div><!-- /.conainer-fluid -->
+    </main>
+    
+  </div>
+
+  <ng-template #loginTemplate>
+      <div class="flex-row align-items-center container-fluid">
+          
+          <alert></alert>
+          <router-outlet></router-outlet>
+      </div><!-- /.conainer-fluid -->
+  </ng-template>
+
+  <footer class="app-footer" *ngIf="authGuard.allowTransition()">
+    <a href="http://solutrons.com">Solutrons</a> &copy; 2017 Hamper.
+    <span class="float-right">Powered by <a href="http://usehamper.com">Hamper</a></span>
+  </footer>
+
+
+

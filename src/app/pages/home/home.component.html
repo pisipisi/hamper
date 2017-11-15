@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-lg-12">
+        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />   
+        <div class="card" *ngIf="currentOrder && currentOrder.length>0 else noOrder">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> Current Order
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Order #</th>
+                            <th>Pickup Date</th>
+                            <th>Delivery Date</th>
+                            <th>Delivery Fee</th>
+                            <th>Subtotal</th>
+                            <th>Tax</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let i of currentOrder" [routerLink]="['/history', i.orderID]">
+                            <td>{{i.orderID}}</td>
+                            <td>{{i.pickup_date}}</td>
+                            <td>{{i.dropoff_date}}</td>
+                            <td>${{i.deliveryFee}}</td>
+                            <td>${{i.subTotal}}</td>
+                            <td>${{i.tax}}</td>
+                            <td>${{i.total}}</td>
+                            <td>{{i.status_str}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <ng-template #noOrder>
+            <div class="card" *ngIf="!loading">
+                <div class="card-header">
+                    Hello
+                 </div>
+                <div class="card-body">
+                    You don't have any current orders.
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <!--/.col-->
+</div>

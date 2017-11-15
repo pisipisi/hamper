@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div id="ui-view" style="opacity: 1;"><div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <form name="profile" (ngSubmit)="profile.form.valid && updateProfile() " #profile="ngForm" ngNativeValidate>
+            <div class="card-header">
+              <strong>Profile</strong>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <p class="form-control-static">{{currentUser.email}}</p>
+              </div>
+              <div class="form-group">
+                <label for="company">First Name</label>
+                <input type="text" name="first_name" [(ngModel)]="currentUser.first_name" class="form-control" id="first_name" placeholder="Enter your first name"  required>
+              </div>
+              <div class="form-group">
+                <label for="vat">Last Name</label>
+                <input type="text" class="form-control" name="last_name" [(ngModel)]="currentUser.last_name"   id="last_name" placeholder="Enter your last Name" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Mobile Phone</label>
+                <input type="text" class="form-control" id="phone" name="phone_number" [(ngModel)]="currentUser.phone_number"  placeholder="Mobile Phone" required>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-sm btn-primary" [disabled]="loading"><i class="fa fa-dot-circle-o"></i> Update</button>
+              <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--/.col-->
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <form name="form" (ngSubmit)="address.form.valid && updateAddress() " #address="ngForm" ngNativeValidate>
+              <div class="card-header">
+                <strong>Address</strong>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="street">Street</label>
+                  <input type="text" class="form-control" name="street_address_1" [(ngModel)]="currentUser.street_address_1"  id="street" placeholder="Enter street name" required>
+                </div>
+                <div class="row">
+                  <div class="form-group col-sm-8">
+                    <label for="city">Suite</label>
+                    <input type="text" class="form-control" name="suite_1" [(ngModel)]="currentUser.suite_1"  id="suite" placeholder="Enter your Suite">
+                  </div>
+                  <div class="form-group col-sm-4">
+                    <label for="postal-code">Postal Code</label>
+                    <input type="text" class="form-control" name="zip_1" [(ngModel)]="currentUser.zip_1"  id="postal-code" placeholder="Postal Code" required>
+                  </div>
+                </div>
+                <!--/.row-->
+              </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-sm btn-primary" [disabled]="addressLoading"><i class="fa fa-dot-circle-o"></i> Update</button>
+                <img *ngIf="addressLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+              </div>
+            </form>
+          </div>
+        </div>
+        <!--/.col-->
+      </div>
+<!--/.row-->
+  </div>
+</div>
+</div>

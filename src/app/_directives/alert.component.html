@@ -1,0 +1,15 @@
+<!-- <div class="animated fadeIn" *ngIf="message">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card text-white bg-primary" [ngClass]="{ 'bg-warning': message, 'bg-success': message.type === 'success', 'bg-danger': message.type === 'error' }">
+                <div class="card-body pb-0">
+                    <p>{{message.text}}</p>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div> -->
+<div *ngFor="let alert of alerts" class="{{ cssClass(alert) }} alert-dismissable">
+        {{alert.message}}
+    <a class="close" (click)="removeAlert(alert)">&times;</a>
+</div>

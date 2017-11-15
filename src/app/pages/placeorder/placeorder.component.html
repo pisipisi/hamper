@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <div id="ui-view" style="opacity: 1;"><div class="animated fadeIn">
+<div class="row">
+<div class="col-sm-6">
+  <div class="card">
+    <div class="card-header">
+      <strong>Pickup Time</strong>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <owl-date-time [(ngModel)]="pickup" [inline]="true" [inputId]="'input1'"  [min]="pickup_min" (onSelect)="onSelectPickupDate($event)" type="calendar" required></owl-date-time>
+          </div>
+        </div>
+      </div>
+      <!--/.row-->
+      <div class="row" (click)="onButtonPickupClick($event)">
+        <button class="btn btn-sm" [disabled]="disableButton(1)" name="pickupMorning" style="margin-left:auto; margin-right:auto;">Morning</button>
+        <button class="btn btn-sm" [disabled]="disableButton(2)" name="pickupAfternoon" style="margin-left:auto; margin-right:auto;">Afternoon</button>    
+        <button class="btn btn-sm"  [disabled]="disableButton(3)" name="pickupEvening" style="margin-left:auto; margin-right:auto;">Evening</button>
+        </div>
+      <!--/.row-->
+    </div>
+  </div>
+
+</div>
+<!--/.col-->
+<div class="col-sm-6" style="margin-left:auto; margin-right:auto;">
+    <div class="card">
+      <div class="card-header">
+        <strong>Delivery Time</strong>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group" style="margin-left:auto; margin-right:auto;">
+              <owl-date-time [(ngModel)]="delivery" [inline]="true" [inputId]="'input2'" [min]="delivery_min" type="calendar" (onSelect)="onSelectDeliveryDate($event)"></owl-date-time>
+            </div>
+          </div>
+        </div>
+        <!--/.row-->
+        <div class="row" (click)="onButtonDeliveryClick($event)" >
+            <button class="btn btn-sm" [disabled]="disableButton(4)" type="button"  name="deliveryMorning" style="margin-left:auto; margin-right:auto;">Morning</button>
+            <button class="btn btn-sm" [disabled]="disableButton(5)" type="button" name="deliveryAfternoon" style="margin-left:auto; margin-right:auto;">Afternoon</button>    
+            <button class="btn btn-sm" [disabled]="disableButton(6)" type="button"  name="deliveryEvening" style="margin-left:auto; margin-right:auto;">Evening</button>
+        </div>
+        <!--/.row-->
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->
+<div class="row">
+    <div class="col-lg-12">
+            
+      <div class="card">
+        <div class="card-header">
+          <strong>Promotion Code</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="form-group col-sm-12">
+              <label for="promo">Enter promo code if you have one.</label>
+              <input type="text" class="form-control" [(ngModel)]="promoCode">
+            </div>
+          </div>
+          <!--/.row-->
+        </div>
+        <div class="card-footer">
+            <button type="button" (click) = "onSubmitOrder()" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Next</button>
+          </div>
+      </div>
+
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+
+</div></div>
+  </div>
